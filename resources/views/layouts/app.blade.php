@@ -14,57 +14,53 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div id="app">
-            <div class="preloader">
-                <div class="sk-chase">
-                    <div class="sk-chase-dot"></div>
-                    <div class="sk-chase-dot"></div>
-                    <div class="sk-chase-dot"></div>
-                    <div class="sk-chase-dot"></div>
-                    <div class="sk-chase-dot"></div>
-                    <div class="sk-chase-dot"></div>
-                </div>
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
             </div>
-            <!-- Drawer Layout -->
-            <div class="mdk-drawer-layout js-mdk-drawer-layout"
-                data-push
-                data-responsive-width="992px">
-                <div class="mdk-drawer-layout__content page-content">
+        </div>
+        <!-- Drawer Layout -->
+        <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+            <div class="mdk-drawer-layout__content page-content">
 
-                    <!-- Header -->
-                    <!-- Navbar -->
-                    @include('layouts.header')
-                    <!-- // END Navbar -->
-                    <!-- // END Header -->
+                <!-- Header -->
+                <!-- Navbar -->
+                @include('layouts.header')
+                <!-- // END Navbar -->
+                <!-- // END Header -->
 
-                    @include('components.breadcrumb')
+                @include('components.breadcrumb')
 
-                    <!-- BEFORE Page Content -->
+                <!-- BEFORE Page Content -->
 
-                    <!-- // END BEFORE Page Content -->
+                <!-- // END BEFORE Page Content -->
 
-                    <!-- Page Content -->
-                    <div class="container page__container">
-                        @yield('content')
-                    </div>
-                    <!-- // END Page Content -->
-
-                    <!-- Footer -->
-                    @include('layouts.footer')
-                    <!-- // END Footer -->
+                <!-- Page Content -->
+                <div class="container page__container" id="app">
+                    @yield('content')
                 </div>
+                <!-- // END Page Content -->
 
-                <!-- // END drawer-layout__content -->
-
-                <!-- Drawer -->
-
-                <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
-                    @include('layouts.sidebar')
-                </div>
-
-                <!-- // END Drawer -->
-
+                <!-- Footer -->
+                @include('layouts.footer')
+                <!-- // END Footer -->
             </div>
+
+            <!-- // END drawer-layout__content -->
+
+            <!-- Drawer -->
+
+            <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+                @include('layouts.sidebar')
+            </div>
+
+            <!-- // END Drawer -->
+
         </div>
         @include('layouts.scripts')
     </body>
