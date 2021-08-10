@@ -14,64 +14,57 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="preloader">
-            <div class="sk-chase">
-                <div class="sk-chase-dot"></div>
-                <div class="sk-chase-dot"></div>
-                <div class="sk-chase-dot"></div>
-                <div class="sk-chase-dot"></div>
-                <div class="sk-chase-dot"></div>
-                <div class="sk-chase-dot"></div>
-            </div>
-
-            <!-- <div class="sk-bounce">
-    <div class="sk-bounce-dot"></div>
-    <div class="sk-bounce-dot"></div>
-  </div> -->
-
-            <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
-        </div>
-
-        <!-- Drawer Layout -->
-
-        <div class="mdk-drawer-layout js-mdk-drawer-layout"
-             data-push
-             data-responsive-width="992px">
-            <div class="mdk-drawer-layout__content page-content">
-
-                <!-- Header -->
-                <!-- Navbar -->
-                @include('layouts.header')
-                <!-- // END Navbar -->
-                <!-- // END Header -->
-
-                @include('components.breadcrumb')
-
-                <!-- BEFORE Page Content -->
-
-                <!-- // END BEFORE Page Content -->
-
-                <!-- Page Content -->
-                <div class="container page__container">
-                    @yield('content')
+        <div id="app">
+            <div class="preloader">
+                <div class="sk-chase">
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
+                    <div class="sk-chase-dot"></div>
                 </div>
-                <!-- // END Page Content -->
-
-                <!-- Footer -->
-                @include('layouts.footer')
-                <!-- // END Footer -->
             </div>
+            <!-- Drawer Layout -->
+            <div class="mdk-drawer-layout js-mdk-drawer-layout"
+                data-push
+                data-responsive-width="992px">
+                <div class="mdk-drawer-layout__content page-content">
 
-            <!-- // END drawer-layout__content -->
+                    <!-- Header -->
+                    <!-- Navbar -->
+                    @include('layouts.header')
+                    <!-- // END Navbar -->
+                    <!-- // END Header -->
 
-            <!-- Drawer -->
+                    @include('components.breadcrumb')
 
-            <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
-                @include('layouts.sidebar')
+                    <!-- BEFORE Page Content -->
+
+                    <!-- // END BEFORE Page Content -->
+
+                    <!-- Page Content -->
+                    <div class="container page__container">
+                        @yield('content')
+                    </div>
+                    <!-- // END Page Content -->
+
+                    <!-- Footer -->
+                    @include('layouts.footer')
+                    <!-- // END Footer -->
+                </div>
+
+                <!-- // END drawer-layout__content -->
+
+                <!-- Drawer -->
+
+                <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+                    @include('layouts.sidebar')
+                </div>
+
+                <!-- // END Drawer -->
+
             </div>
-
-            <!-- // END Drawer -->
-
         </div>
         @include('layouts.scripts')
     </body>
