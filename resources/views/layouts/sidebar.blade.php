@@ -3,18 +3,51 @@
         <!-- Sidebar Content -->
         <a href="index.html" class="sidebar-brand ">
             <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-                <img class="sidebar-brand-icon rounded" src="{{asset('assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg')}}" alt="Quadque - LMS">
+                <img class="sidebar-brand-icon rounded-circle" src="{{asset('assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg')}}" alt="Quadque - LMS">
             </span>
-            <span>Quadque - LMS</span>
+            <span>John Doe</span>
         </a>
+
+        <div class="sidebar-heading">Administrator</div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-menu-item active">
+                <a class="sidebar-menu-button" href="{{URL::to('/')}}">
+                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dashboard</span>
+                    <span class="sidebar-menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item {{request()->segment(1) == 'account' ? 'open' : ''}}">
+                <a class="sidebar-menu-button"
+                    data-toggle="collapse"
+                    href="#account_menu">
+                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
+                    Account
+                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                </a>
+                <ul class="sidebar-submenu collapse sm-indent" id="account_menu">
+                    <li class="sidebar-menu-item {{Route::currentRouteName() == 'profile' ? 'active' : ''}}">
+                        <a class="sidebar-menu-button"
+                            href="{{route('profile')}}">
+                            <span class="sidebar-menu-text">Edit Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="change-password.html">
+                            <span class="sidebar-menu-text">Activities</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
         <div class="sidebar-heading">Student</div>
         <ul class="sidebar-menu">
-            <li class="sidebar-menu-item active">
+            <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button"
                     href="index.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dashboard</span>
-                    <span class="sidebar-menu-text">Dashboard</span>
+                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
+                    <span class="sidebar-menu-text">Home</span>
                 </a>
             </li>
             <li class="sidebar-menu-item">
@@ -396,109 +429,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    data-toggle="collapse"
-                    href="#account_menu">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                    Account
-                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                </a>
-                <ul class="sidebar-submenu collapse sm-indent"
-                    id="account_menu">
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="pricing.html">
-                            <span class="sidebar-menu-text">Pricing</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="login.html">
-                            <span class="sidebar-menu-text">Login</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="signup.html">
-                            <span class="sidebar-menu-text">Signup</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="signup-payment.html">
-                            <span class="sidebar-menu-text">Payment</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="reset-password.html">
-                            <span class="sidebar-menu-text">Reset Password</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="change-password.html">
-                            <span class="sidebar-menu-text">Change Password</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="edit-account.html">
-                            <span class="sidebar-menu-text">Edit Account</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="edit-account-profile.html">
-                            <span class="sidebar-menu-text">Profile &amp; Privacy</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="edit-account-notifications.html">
-                            <span class="sidebar-menu-text">Email Notifications</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="edit-account-password.html">
-                            <span class="sidebar-menu-text">Account Password</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="billing.html">
-                            <span class="sidebar-menu-text">Subscription</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="billing-upgrade.html">
-                            <span class="sidebar-menu-text">Upgrade Account</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="billing-payment.html">
-                            <span class="sidebar-menu-text">Payment Information</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="billing-history.html">
-                            <span class="sidebar-menu-text">Payment History</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button"
-                            href="billing-invoice.html">
-                            <span class="sidebar-menu-text">Invoice</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
             <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button"
                     data-toggle="collapse"

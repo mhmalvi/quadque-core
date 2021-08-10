@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'admin.index')->name('admin.dashboard');
+Route::view('account/edit-profile', 'pages.profile')->name('profile');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

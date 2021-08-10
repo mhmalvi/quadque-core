@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
+@section('links')
+    <a href="" class="btn btn-outline-secondary">New Report</a>
+@endsection
+
 @section('content')
     <div class="page-section">
         <div class="row mb-lg-8pt">
@@ -220,7 +226,7 @@
 
                                 <div class="avatar avatar-32pt mr-8pt">
 
-                                    <img src="./public/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+                                    <img src="{{asset('assets/images/256_rsz_1andy-lee-642320-unsplash.jpg')}}"
                                             alt="Avatar"
                                             class="avatar-img rounded-circle">
 
@@ -242,7 +248,7 @@
 
                                 <div class="avatar avatar-32pt mr-8pt">
 
-                                    <img src="./public/images/256_michael-dam-258165-unsplash.jpg"
+                                    <img src="{{asset('assets/images/256_michael-dam-258165-unsplash.jpg')}}"
                                             alt="Avatar"
                                             class="avatar-img rounded-circle">
 
@@ -606,7 +612,7 @@
                                         style="white-space: nowrap;">
                                     <div class="avatar avatar-sm mr-8pt">
 
-                                        <img src="./public/images/people/110/guy-1.jpg"
+                                        <img src="{{asset('assets/images/people/110/guy-1.jpg')}}"
                                                 alt="Avatar"
                                                 class="avatar-img rounded-circle">
 
@@ -694,7 +700,7 @@
                                         style="white-space: nowrap;">
                                     <div class="avatar avatar-sm mr-8pt">
 
-                                        <img src="./public/images/people/110/guy-2.jpg"
+                                        <img src="{{asset('assets/images/people/110/guy-2.jpg')}}"
                                                 alt="Avatar"
                                                 class="avatar-img rounded-circle">
 
