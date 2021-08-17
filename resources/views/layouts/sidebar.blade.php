@@ -7,7 +7,6 @@
             </span>
             <span>John Doe</span>
         </a>
-
         <div class="sidebar-heading">Administrator</div>
         <ul class="sidebar-menu">
             <li class="sidebar-menu-item active">
@@ -16,206 +15,216 @@
                     <span class="sidebar-menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="sidebar-menu-item {{request()->segment(1) == 'account' ? 'open' : ''}}">
-                <a class="sidebar-menu-button"
-                    data-toggle="collapse"
-                    href="#account_menu">
+            <li class="sidebar-menu-item {{request()->segment(1) == 'account' ? 'open active' : ''}}">
+                <a class="sidebar-menu-button" data-toggle="collapse" href="#account_menu">
                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
                     Account
                     <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
                 <ul class="sidebar-submenu collapse sm-indent" id="account_menu">
-                    <li class="sidebar-menu-item {{Route::currentRouteName() == 'profile' ? 'active' : ''}}">
-                        <a class="sidebar-menu-button"
-                            href="{{route('profile')}}">
+                    <li class="sidebar-menu-item {{Route::currentRouteName() == 'account.profile' ? 'active' : ''}}">
+                        <a class="sidebar-menu-button" href="{{route('account.profile')}}">
                             <span class="sidebar-menu-text">Edit Profile</span>
                         </a>
                     </li>
-                    <li class="sidebar-menu-item">
+                    <li class="sidebar-menu-item {{Route::currentRouteName() == 'account.activities' ? 'active' : ''}}">
                         <a class="sidebar-menu-button"
-                            href="change-password.html">
+                            href="{{route('account.activities')}}">
                             <span class="sidebar-menu-text">Activities</span>
                         </a>
                     </li>
                 </ul>
             </li>
-        </ul>
-
-        <div class="sidebar-heading">Student</div>
-        <ul class="sidebar-menu">
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="index.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>
-                    <span class="sidebar-menu-text">Home</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="courses.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
-                    <span class="sidebar-menu-text">Browse Courses</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="paths.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>
-                    <span class="sidebar-menu-text">Browse Paths</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-dashboard.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                    <span class="sidebar-menu-text">Student Dashboard</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-my-courses.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>
-                    <span class="sidebar-menu-text">My Courses</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-paths.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>
-                    <span class="sidebar-menu-text">My Paths</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-path.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>
-                    <span class="sidebar-menu-text">Path Details</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-course.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">face</span>
-                    <span class="sidebar-menu-text">Course Preview</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-lesson.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>
-                    <span class="sidebar-menu-text">Lesson Preview</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-take-course.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">class</span>
-                    <span class="sidebar-menu-text">Take Course</span>
-                    <span class="sidebar-menu-badge badge badge-accent badge-notifications ml-auto">PRO</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-take-lesson.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
-                    <span class="sidebar-menu-text">Take Lesson</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-take-quiz.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
-                    <span class="sidebar-menu-text">Take Quiz</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-quiz-results.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
-                    <span class="sidebar-menu-text">My Quizzes</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-quiz-result-details.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>
-                    <span class="sidebar-menu-text">Quiz Result</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-path-assessment.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>
-                    <span class="sidebar-menu-text">Skill Assessment</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="student-path-assessment-result.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>
-                    <span class="sidebar-menu-text">Skill Result</span>
-                </a>
-            </li>
-
-        </ul>
-        <div class="sidebar-heading">Instructor</div>
-        <ul class="sidebar-menu">
-
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-dashboard.html">
+                <a class="sidebar-menu-button js-sidebar-collapse"
+                    data-toggle="collapse"
+                    href="#student_menu">
                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">school</span>
-                    <span class="sidebar-menu-text">Instructor Dashboard</span>
+                    Student
+                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
+                <ul class="sidebar-submenu collapse sm-indent"
+                    id="student_menu">
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="index.html">
+
+                            <span class="sidebar-menu-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="courses.html">
+
+                            <span class="sidebar-menu-text">Browse Courses</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="paths.html">
+
+                            <span class="sidebar-menu-text">Browse Paths</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-dashboard.html">
+
+                            <span class="sidebar-menu-text">Student Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-my-courses.html">
+
+                            <span class="sidebar-menu-text">My Courses</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-paths.html">
+
+                            <span class="sidebar-menu-text">My Paths</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-path.html">
+
+                            <span class="sidebar-menu-text">Path Details</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-course.html">
+
+                            <span class="sidebar-menu-text">Course Preview</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-lesson.html">
+
+                            <span class="sidebar-menu-text">Lesson Preview</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-take-course.html">
+
+                            <span class="sidebar-menu-text">Take Course</span>
+                            <span class="sidebar-menu-badge badge badge-accent badge-notifications ml-auto">PRO</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-take-lesson.html">
+
+                            <span class="sidebar-menu-text">Take Lesson</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-take-quiz.html">
+
+                            <span class="sidebar-menu-text">Take Quiz</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-quiz-results.html">
+
+                            <span class="sidebar-menu-text">My Quizzes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-quiz-result-details.html">
+
+                            <span class="sidebar-menu-text">Quiz Result</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-path-assessment.html">
+
+                            <span class="sidebar-menu-text">Skill Assessment</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="student-path-assessment-result.html">
+
+                            <span class="sidebar-menu-text">Skill Result</span>
+                        </a>
+                    </li>
+
+                </ul>
             </li>
             <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-courses.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>
-                    <span class="sidebar-menu-text">Manage Courses</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-quizzes.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">help</span>
-                    <span class="sidebar-menu-text">Manage Quizzes</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-earnings.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">trending_up</span>
-                    <span class="sidebar-menu-text">Earnings</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-statement.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">receipt</span>
-                    <span class="sidebar-menu-text">Statement</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-edit-course.html">
-                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">post_add</span>
-                    <span class="sidebar-menu-text">Edit Course</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button"
-                    href="instructor-edit-quiz.html">
+                <a class="sidebar-menu-button js-sidebar-collapse"
+                    data-toggle="collapse"
+                    href="#instructor_menu">
                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">format_shapes</span>
-                    <span class="sidebar-menu-text">Edit Quiz</span>
+                    Instructor
+                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
+                <ul class="sidebar-submenu collapse sm-indent"
+                    id="instructor_menu">
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-dashboard.html">
+
+                            <span class="sidebar-menu-text">Instructor Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-courses.html">
+
+                            <span class="sidebar-menu-text">Manage Courses</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-quizzes.html">
+
+                            <span class="sidebar-menu-text">Manage Quizzes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-earnings.html">
+
+                            <span class="sidebar-menu-text">Earnings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-statement.html">
+
+                            <span class="sidebar-menu-text">Statement</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-edit-course.html">
+
+                            <span class="sidebar-menu-text">Edit Course</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                            href="instructor-edit-quiz.html">
+
+                            <span class="sidebar-menu-text">Edit Quiz</span>
+                        </a>
+                    </li>
+
+                </ul>
             </li>
-
-        </ul>
-
-        <div class="sidebar-heading">Applications</div>
-        <ul class="sidebar-menu">
-
             <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button js-sidebar-collapse"
                     data-toggle="collapse"
@@ -224,9 +233,9 @@
                     Enterprise
                     <span class="ml-auto sidebar-menu-toggle-icon"></span>
                 </a>
-                <ul class="sidebar-submenu collapse sm-indent"
+                <ul class="sidebar-submenu collapse show sm-indent"
                     id="enterprise_menu">
-                    <li class="sidebar-menu-item">
+                    <li class="sidebar-menu-item active">
                         <a class="sidebar-menu-button"
                             href="erp-dashboard.html">
                             <span class="sidebar-menu-text">ERP Dashboard</span>
@@ -508,8 +517,5 @@
                 </ul>
             </li>
         </ul>
-
-        <!-- // END Sidebar Content -->
-
     </div>
 </div>
