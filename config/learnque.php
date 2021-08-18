@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin' => [
+    'admins' => [
         'admin@leanque.com'
     ]
 ];
