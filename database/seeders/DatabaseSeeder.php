@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@learnque.com',
             'password' => Hash::make('admin')
         ]);
+
+        User::create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('123123')
+        ]);
     }
 }
