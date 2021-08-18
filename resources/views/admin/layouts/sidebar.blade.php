@@ -6,21 +6,21 @@
             <span class="sidebar-menu-text">Dashboard</span>
         </a>
     </li>
-    <li class="sidebar-menu-item {{request()->segment(2) == 'account' ? 'open active' : ''}}">
+    <li class="sidebar-menu-item {{request()->segment(1) == 'account' ? 'open active' : ''}}">
         <a class="sidebar-menu-button" data-toggle="collapse" href="#account_menu">
             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
             Account
             <span class="ml-auto sidebar-menu-toggle-icon"></span>
         </a>
         <ul class="sidebar-submenu collapse sm-indent" id="account_menu">
-            <li class="sidebar-menu-item {{Route::currentRouteName() == 'admin.account.profile' ? 'active' : ''}}">
-                <a class="sidebar-menu-button" href="{{route('admin.account.profile')}}">
+            <li class="sidebar-menu-item {{Route::currentRouteName() == 'account.profile' ? 'active' : ''}}">
+                <a class="sidebar-menu-button" href="{{route('account.profile')}}">
                     <span class="sidebar-menu-text">Edit Profile</span>
                 </a>
             </li>
-            <li class="sidebar-menu-item {{Route::currentRouteName() == 'admin.account.activities' ? 'active' : ''}}">
+            <li class="sidebar-menu-item {{Route::currentRouteName() == 'account.activities' ? 'active' : ''}}">
                 <a class="sidebar-menu-button"
-                    href="{{route('admin.account.activities')}}">
+                    href="{{route('account.activities')}}">
                     <span class="sidebar-menu-text">Activities</span>
                 </a>
             </li>

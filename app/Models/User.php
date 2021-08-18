@@ -42,8 +42,19 @@ class User extends Authenticatable
     ];
 
 
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower(preg_replace("/\s+/", "", $value));
+    }
+
+
     public function isAdmin()
     {
         return in_array($this->email, config('learnque.admins'));
+    }
+
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class);
     }
 }

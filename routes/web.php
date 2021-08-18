@@ -17,8 +17,17 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::prefix('account')->name('account.')->group(function () {
+        Route::view('/edit-profile', 'account.profile')->name('profile');
+        Route::post('/edit-profile', 'UserProfileController@update');
+        Route::post('/update-password', 'UserProfileController@updatePassword');
+        Route::view('/activities', 'account.activities')->name('activities');
+    });
+});
 
 require __DIR__ . '/auth.php';
