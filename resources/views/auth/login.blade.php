@@ -44,14 +44,29 @@
 	            <div class="container my-auto py-5">
 	                <div class="row">
 	                    <div class="col-lg-9 col-xl-7 mx-auto">
-	                        <form class="input_style_2" method="post">
+							@if ($errors->any())
+								<div class="mb-4 text-danger">
+									<div class="font-medium text-red-600">
+										{{ __('Whoops! Something went wrong.') }}
+									</div>
+
+									<ul class="mt-3 list-disc list-inside text-sm text-red-600">
+										@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+										@endforeach
+									</ul>
+								</div>
+							@endif
+
+	                        <form class="input_style_2" method="post" action="{{ route('login') }}">
+								@csrf
 	                            <div class="form-group">
 	                                <label for="email_address">Email Address</label>
-	                                <input type="email" name="email_address" id="email_address" class="form-control">
+	                                <input type="email" name="email" id="email_address" class="form-control" value="{{old('email')}}">
 	                            </div>
 	                            <div class="form-group">
 	                                <label for="password">Password</label>
-	                                <input type="password" name="password" id="password" class="form-control">
+	                                <input type="password" name="password" id="password" class="form-control" required autocomplete="current-password">
 	                            </div>
 	                            <div class="clearfix mb-3">
 	                                <div class="float-left">

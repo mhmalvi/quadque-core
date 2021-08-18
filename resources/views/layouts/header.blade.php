@@ -27,9 +27,13 @@
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="javascript:void(0)">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout').submit()">
                     Logout
                 </a>
+
+                <form action="{{route('logout')}}" method="post" id="logout">
+                    @csrf
+                </form>
             </div>
         </div>
     </div>
