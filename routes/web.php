@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
         Route::view('/edit-profile', 'account.profile')->name('profile');
         Route::post('/edit-profile', 'UserProfileController@update');
         Route::post('/update-password', 'UserProfileController@updatePassword');
+        Route::post('/edit-profile-picture', 'UserProfileController@updateProfilePicture');
         Route::view('/activities', 'account.activities')->name('activities');
     });
 });
