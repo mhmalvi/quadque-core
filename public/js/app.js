@@ -21069,6 +21069,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -21080,17 +21086,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     passwordMatched: function passwordMatched() {
-      if (this.password == this.password_confirmation) {
-        return true;
-      } else {
+      if (this.password_confirmation != "" && this.password != this.password_confirmation) {
         return false;
+      } else {
+        return true;
       }
     },
     handleFormSubmit: function handleFormSubmit() {
       var _this = this;
 
       this.isLoading = true;
-      axios.post("update-password", {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("update-password", {
         oldPassword: this.oldPassword,
         password: this.password,
         password_confirmation: this.password_confirmation
@@ -21099,16 +21105,16 @@ __webpack_require__.r(__webpack_exports__);
         _this.password = "";
         _this.password_confirmation = "";
         _this.isLoading = false;
-        Swal.fire({
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
           title: "Success",
           text: res.data.message,
           icon: "success"
         });
-      })["catch"](function (err) {
+      })["catch"](function (error) {
         _this.isLoading = false;
-        Swal.fire({
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
           title: "Warning",
-          text: "Internal Server Error!",
+          text: "Internal Server Error! This could happend if your old password is wrong.",
           icon: "warning"
         });
       });
@@ -21438,7 +21444,11 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = ["disabled"];
+var _hoisted_10 = {
+  key: 0,
+  "class": "invalid-feedback"
+};
+var _hoisted_11 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -21474,13 +21484,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Confirm your new password ..."
   }, null, 2
   /* CLASS */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password_confirmation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password_confirmation]]), !$options.passwordMatched() ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, "Password doesn't matched.")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["btn btn-primary", $data.isLoading && 'is-loading']),
     disabled: !$options.isValid
   }, "Save password", 10
   /* CLASS, PROPS */
-  , _hoisted_10)], 32
+  , _hoisted_11)], 32
   /* HYDRATE_EVENTS */
   )])])], 64
   /* STABLE_FRAGMENT */
