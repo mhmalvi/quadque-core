@@ -24,7 +24,7 @@ class FileUploadController extends Controller
                 'filename' => $filename
             ]);
 
-            return $folder;
+            return response()->json(['message' => "success", "file" => $folder], 200);
         }
 
         return;
