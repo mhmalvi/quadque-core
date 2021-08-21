@@ -37,14 +37,14 @@
                     <div class="page-separator__text">Course Informations</div>
                 </div>
                 <p class="card-subtitle text-70 mb-16pt mb-lg-0">
-                    
+
                 </p>
             </div>
             <div class="col-lg-8 d-flex align-items-center">
                 <div class="flex" style="max-width: 100%">
                     <div class="form-group">
                         <label class="form-label" for="details">Descriptions</label>
-                        <textarea id="details" rows="10" class="form-control" style="resize: none;"></textarea>
+                        <quill-editor theme="snow" v-model:content="details" contentType="html"></quill-editor>
                     </div>
                 </div>
             </div>
@@ -94,14 +94,18 @@
 <script>
 import axios from "axios";
 import ThumbnailComponent from "../childs/ThumbnailComponent.vue";
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 export default {
   components: {
     ThumbnailComponent,
+    QuillEditor,
   },
   data() {
     return {
       isValid: false,
       thumbnail: "",
+      details: "",
     };
   },
   methods: {
@@ -110,19 +114,22 @@ export default {
     },
 
     onFormSubmitHandlar() {
-      axios
-        .post("store", {
-          thumbnail: this.thumbnail,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      //   axios
+      //     .post("store", {
+      //       thumbnail: this.thumbnail,
+      //     })
+      //     .then((res) => {
+      //       console.log(res);
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
     },
   },
 };
 </script>
-<style lang="">
+<style>
+.ql-container {
+  height: 300px !important;
+}
 </style>
