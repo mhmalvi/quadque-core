@@ -21018,11 +21018,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _childs_ThumbnailComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../childs/ThumbnailComponent.vue */ "./resources/js/components/childs/ThumbnailComponent.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _childs_ThumbnailComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../childs/ThumbnailComponent.vue */ "./resources/js/components/childs/ThumbnailComponent.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ThumbnailComponent: _childs_ThumbnailComponent_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    ThumbnailComponent: _childs_ThumbnailComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   data: function data() {
     return {
@@ -21033,6 +21036,15 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onImageUpload: function onImageUpload(image) {
       this.thumbnail = image;
+    },
+    onFormSubmitHandlar: function onFormSubmitHandlar() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("store", {
+        thumbnail: this.thumbnail
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -21446,12 +21458,16 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row mb-32pt\"><div class=\"col-lg-4\"><div class=\"form-group\"><div class=\"custom-control custom-checkbox\"><input class=\"custom-control-input\" type=\"checkbox\" value=\"\" id=\"draft\"><label class=\"custom-control-label\" for=\"draft\"> Save as draft </label></div></div></div><div class=\"col-lg-8\"><button class=\"btn btn-primary\"><span class=\"material-icons mr-2\">save</span> Save Now </button><button type=\"reset\" class=\"btn btn-light ml-2\"><span class=\"material-icons mr-2\">clear_all</span> Clear all </button></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row mb-32pt\"><div class=\"col-lg-4\"><div class=\"form-group\"><div class=\"custom-control custom-checkbox\"><input class=\"custom-control-input\" type=\"checkbox\" value=\"\" id=\"draft\"><label class=\"custom-control-label\" for=\"draft\"> Save as draft </label></div></div></div><div class=\"col-lg-8\"><button type=\"submit\" class=\"btn btn-primary\"><span class=\"material-icons mr-2\">save</span> Save Now </button><button type=\"reset\" class=\"btn btn-light ml-2\"><span class=\"material-icons mr-2\">clear_all</span> Clear all </button></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_thumbnail_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("thumbnail-component");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Thumbnail "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_thumbnail_component, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
+    onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.onFormSubmitHandlar();
+    }, ["prevent"]))
+  }, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Thumbnail "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_thumbnail_component, {
     onImageHandler: $options.onImageUpload
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -21471,8 +21487,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.thumbnail]])]), _hoisted_6], 64
-  /* STABLE_FRAGMENT */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.thumbnail]])]), _hoisted_6], 32
+  /* HYDRATE_EVENTS */
   );
 }
 

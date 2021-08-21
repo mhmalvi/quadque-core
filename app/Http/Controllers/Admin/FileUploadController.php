@@ -17,7 +17,7 @@ class FileUploadController extends Controller
 
             $folder = uniqid() . "_" . now()->timestamp;
 
-            $file->storeAs('public/thumbnails/temp/' . $folder, $filename);
+            $file->storeAs('public/thumbnails/tmp/' . $folder, $filename);
 
             TemporaryFile::create([
                 'folder' => $folder,

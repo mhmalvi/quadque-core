@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class CoursesController extends Controller
 {
     public function create()
     {
         return view('admin.courses.create');
+    }
+
+
+    public function store(Request $request)
+    {
     }
 }
