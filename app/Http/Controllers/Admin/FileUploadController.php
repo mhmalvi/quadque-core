@@ -16,13 +16,16 @@ class FileUploadController extends Controller
 
                 $filename = $file->getClientOriginalName();
 
+                $ext = $file->getClientOriginalExtension();
+
                 $folder = uniqid() . "_" . now()->timestamp;
 
                 $file->storeAs('public/thumbnails/tmp/' . $folder, $filename);
 
                 TemporaryFile::create([
                     'folder' => $folder,
-                    'filename' => $filename
+                    'filename' => $filename,
+                    'ext' => $ext
                 ]);
 
                 return response()->json(['message' => "success", "file" => $folder], 200);

@@ -46,7 +46,7 @@ class CourseCreateRequest extends CourseRequest
             'category_id' => $this->category(),
             'lessons' => $this->lessons,
             'thumbnail' => $this->has('thumbnail') ? $this->storeThumbnail() : null,
-            'alt' => $this->alt,
+            'alt' => $this->filled('alt') ? $this->alt : $this->title,
             'description' => $this->descriptions,
             'publish' => $this->draft ? 0 : 1
         ]);

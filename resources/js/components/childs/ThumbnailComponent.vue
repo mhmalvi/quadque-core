@@ -21,7 +21,7 @@
                     <label for="thumbnail" class="border border-secondary rounded p-3 w-100 text-center thumbnail-select" v-else>
                         Click here to select thumbnail image
                     </label>
-                    <input type="file" id="thumbnail" class="form-control d-none" @change="uploadHandler">
+                    <input type="file" ref="file" id="thumbnail" class="form-control d-none" @change="uploadHandler">
                 </div>
                 <slot></slot>
             </div>
@@ -31,7 +31,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 export default {
-  props: ["contents"],
+  props: ["contents", "thumb"],
   data() {
     return {
       image: "",
@@ -84,9 +84,18 @@ export default {
         });
     },
   },
+
+  watch: {
+    thumb(newValue) {
+      if (newValue == "") {
+        this.image = "";
+        this.$refs.file.value = "";
+      }
+    },
+  },
 };
 </script>
-<style>
+<style scoped>
 .fade-enter-from {
   opacity: 0;
 }

@@ -45,14 +45,14 @@
                 <div class="flex" style="max-width: 100%">
                     <div class="form-group">
                         <label class="form-label" for="details">Descriptions</label>
-                        <quill-editor theme="snow" v-model:content="details" contentType="html"></quill-editor>
+                        <quill-editor theme="snow" v-model:content="details" contentType="html" ref="myEditor"></quill-editor>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mb-32pt">
             <!-- Thumbnail -->
-            <thumbnail-component @imageHandler="onImageUpload">
+            <thumbnail-component @imageHandler="onImageUpload" :thumb ="thumbnail">
                 <slot>
                     <div class="form-group">
                         <label class="form-label" for="imgTitle">Image title</label>
@@ -165,6 +165,7 @@ export default {
       this.imgAlt = "";
       this.draft = "";
       this.isLoading = false;
+      this.$refs.myEditor.setHTML("");
     },
   },
   computed: {
@@ -192,5 +193,8 @@ export default {
 <style>
 .ql-container {
   height: 300px !important;
+}
+.swal2-styled.swal2-confirm {
+  margin-right: 10px !important;
 }
 </style>

@@ -24,6 +24,15 @@ class Course extends Model
     /**
      * 
      */
+    public function setCodeAttribute($value)
+    {
+        $this->attributes['code'] = strtoupper($value);
+    }
+
+
+    /**
+     * 
+     */
     public function getCreatedAtAttribute($value)
     {
         return date("M d, Y", strtotime($value));
