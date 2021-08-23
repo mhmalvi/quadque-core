@@ -7,7 +7,7 @@ Route::view('dashboard', 'admin.index')->name('dashboard');
 Route::post("tmp-file-upload", "FileUploadController@storeFile");
 
 Route::prefix('course')->name('course.')->group(function () {
-    Route::view('all-courses', 'admin.courses.index')->name('index');
+    Route::get('all-courses', "CoursesController@index")->name('index');
     Route::get('create', "CoursesController@create")->name('create');
     Route::post('store', 'CoursesController@store');
 });

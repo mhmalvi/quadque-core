@@ -4,11 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseCreateRequest;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 
 class CoursesController extends Controller
 {
+    public function index()
+    {
+        $courses = Course::orderBy('created_at', 'desc')->paginate(3);
+        return view('admin.courses.index', compact('courses'));
+    }
+
+
     public function create()
     {
         return view('admin.courses.create');
