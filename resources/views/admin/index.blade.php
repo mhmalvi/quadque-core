@@ -800,3 +800,11 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <!-- Chart.js -->
+    <script src="{{asset('assets/vendor/Chart.min.js')}}"></script>
+    <script src="{{asset('assets/js/chartjs.js')}}"></script>
+
+    <!-- Chart.js Samples -->
+    <script src="{{asset('assets/js/page.hr-dashboard.js')}}"></script>
+@endpush

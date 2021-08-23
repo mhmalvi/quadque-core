@@ -31,13 +31,6 @@
 <script src="{{asset('assets/vendor/flatpickr/flatpickr.min.js')}}"></script>
 <script src="{{asset('assets/js/flatpickr.js')}}"></script>
 
-<!-- Chart.js -->
-<script src="{{asset('assets/vendor/Chart.min.js')}}"></script>
-<script src="{{asset('assets/js/chartjs.js')}}"></script>
-
-<!-- Chart.js Samples -->
-<script src="{{asset('assets/js/page.hr-dashboard.js')}}"></script>
-
 <!-- List.js -->
 <script src="{{asset('assets/vendor/list.min.js')}}"></script>
 <script src="{{asset('assets/js/list.js')}}"></script>
