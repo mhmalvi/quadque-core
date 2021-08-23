@@ -24,5 +24,7 @@ class CourseRequest extends FormRequest
 
             $temporaryFile->delete();
         }
+
+        return $filename;
     }
 }

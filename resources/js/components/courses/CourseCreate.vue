@@ -12,21 +12,22 @@
             <div class="col-lg-8 d-flex align-items-center">
                 <div class="flex" style="max-width: 100%">
                     <div class="form-group">
-                        <label class="form-label" for="title">Course Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Enter course title ..">
+                        <label class="form-label" for="code">Course Code <small class="text-danger">*</small></label>
+                        <input type="text" class="form-control" id="code" placeholder="Enter course code .." v-model="code">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="title">Course Title <small class="text-danger">*</small></label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter course title .." v-model="title">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="category">Course Category</label>
-                        <select id="category" class="form-control custom-select">
-                            <option selected="">Open this to select category</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select id="category" class="form-control custom-select" v-model="category">
+                            <option value="uncategorized" selected>Uncategorized</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="lessons">Number of lessons</label>
-                        <input type="text" class="form-control" id="lessons" placeholder="Enter total number of lessons ..">
+                        <label class="form-label" for="lessons">Number of lessons <small class="text-danger">*</small></label>
+                        <input type="number" class="form-control" id="lessons" placeholder="Enter total number of lessons .." v-model="lessons">
                     </div>
                 </div>
             </div>
@@ -55,12 +56,12 @@
                 <slot>
                     <div class="form-group">
                         <label class="form-label" for="imgTitle">Image title</label>
-                        <input type="text" class="form-control" id="imgTitle" placeholder="Set a nice image title ..">
+                        <input type="text" class="form-control" id="imgTitle" placeholder="Set a nice image title .." v-model="imgTitle">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="alt">Image Alternative Text</label>
-                        <input type="text" class="form-control" id="alt" placeholder="Set a nice alternative image title ..">
+                        <input type="text" class="form-control" id="alt" placeholder="Set a nice alternative image title .." v-model="imgAlt">
                     </div>
                 </slot>
             </thumbnail-component>
@@ -70,7 +71,7 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" value="" id="draft">
+                        <input class="custom-control-input" type="checkbox" value="" id="draft" v-model="draft">
                         <label class="custom-control-label" for="draft">
                             Save as draft
                         </label>
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" :class="isLoading && 'is-loading'" :disabled="!formIsValid">
                     <span class="material-icons mr-2">save</span>
                     Save Now
                 </button>
@@ -93,6 +94,7 @@
 </template>
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 import ThumbnailComponent from "../childs/ThumbnailComponent.vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
@@ -104,8 +106,16 @@ export default {
   data() {
     return {
       isValid: false,
-      thumbnail: "",
+      code: "",
+      title: "",
+      category: "uncategorized",
+      lessons: "",
       details: "",
+      thumbnail: "",
+      imgTitle: "",
+      imgAlt: "",
+      draft: "",
+      isLoading: false,
     };
   },
   methods: {
@@ -114,16 +124,67 @@ export default {
     },
 
     onFormSubmitHandlar() {
-      //   axios
-      //     .post("store", {
-      //       thumbnail: this.thumbnail,
-      //     })
-      //     .then((res) => {
-      //       console.log(res);
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+      this.isLoading = true;
+      axios
+        .post("admin/course/store", this.formDataHandler)
+        .then((res) => {
+          this.isLoading = false;
+          Swal.fire({
+            title: "Success",
+            text: "Data saved successfully!",
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonText: `View course list`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location = "/admin/course/all-courses";
+            }
+          });
+
+          this.resetForm();
+        })
+        .catch((err) => {
+          this.isLoading = false;
+          Swal.fire({
+            title: "Warning",
+            text: "Server Error! This could happen for wrong submission!",
+            icon: "warning",
+          });
+        });
+    },
+
+    resetForm() {
+      this.isValid = false;
+      this.code = "";
+      this.title = "";
+      this.category = "uncategorized";
+      this.lessons = "";
+      this.details = "";
+      this.thumbnail = "";
+      this.imgTitle = "";
+      this.imgAlt = "";
+      this.draft = "";
+      this.isLoading = false;
+    },
+  },
+  computed: {
+    formIsValid() {
+      return this.title && this.code && this.lessons;
+    },
+
+    formDataHandler() {
+      let fd = new FormData();
+      fd.append("code", this.code);
+      fd.append("title", this.title);
+      fd.append("category", this.category);
+      fd.append("lessons", this.lessons);
+      fd.append("descriptions", this.details);
+      fd.append("thumbnail", this.thumbnail);
+      fd.append("imgTitle", this.imgTitle);
+      fd.append("alt", this.imgAlt);
+      fd.append("draft", this.draft);
+
+      return fd;
     },
   },
 };

@@ -48,7 +48,7 @@ export default {
       this.thumbnail = event.target.files[0];
       formData.append("thumbnail", this.thumbnail);
       axios
-        .post("file-upload", formData, {
+        .post("admin/tmp-file-upload", formData, {
           onUploadProgress: (uploadEvent) => {
             this.percent = `${Math.round(
               (uploadEvent.loaded / uploadEvent.total) * 100

@@ -15,7 +15,18 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->nullable();
+            $table->string('code');
+            $table->string('title');
+            $table->string('slug');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->integer('lessons');
+            $table->string('thumbnail')->nullable();
+            $table->string('alt')->nullable();
+            $table->longText('description')->nullable();
+            $table->boolean('publish')->default(1);
             $table->timestamps();
+            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
         });
     }
 
