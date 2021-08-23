@@ -145,9 +145,10 @@ export default {
         })
         .catch((err) => {
           this.isLoading = false;
+
           Swal.fire({
-            title: "Warning",
-            text: "Server Error! This could happen for wrong submission!",
+            title: "Server Error!",
+            text: err.response.data.message,
             icon: "warning",
           });
         });
