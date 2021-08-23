@@ -24,12 +24,22 @@
                     <tbody>
                         @forelse ($courses as $course)
                             <tr>
-                                <td>{{$course->code}}</td>
+                                <td>
+                                    {{$course->code}}
+
+                                    <br>
+                                    <br>
+                                    <div>
+                                        <a href="{{route('admin.course.trash', $course->slug)}}">Trash</a>
+                                    </div>
+                                </td>
                                 <td>{{$course->title}}</td>
                                 <td>{{$course->lessons}}</td>
                             </tr>
                         @empty
-                            
+                            <tr>
+                                <td colspan="3" class="text-center">No Course Published!</td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>

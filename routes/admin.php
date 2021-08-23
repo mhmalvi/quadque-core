@@ -10,6 +10,7 @@ Route::prefix('course')->name('course.')->group(function () {
     Route::get('all-courses', "CoursesController@index")->name('index');
     Route::get('create', "CoursesController@create")->name('create');
     Route::post('store', 'CoursesController@store');
+    Route::get('{course}/trash', 'CoursesController@trash')->name('trash');
 });
 
 Route::prefix('settings')->name('settings.')->group(function () {

@@ -37,4 +37,15 @@ class Course extends Model
     {
         return date("M d, Y", strtotime($value));
     }
+
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
