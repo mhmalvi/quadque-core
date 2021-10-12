@@ -20,10 +20,11 @@ class CreateCoursesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null')->onUpdate('cascade');
             $table->integer('lessons');
+            $table->longText('description')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('alt')->nullable();
-            $table->longText('description')->nullable();
             $table->boolean('publish')->default(1);
             $table->timestamps();
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
