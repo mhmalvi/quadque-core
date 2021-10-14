@@ -13,7 +13,7 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::connection('admin')->create('roles', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->string('title');

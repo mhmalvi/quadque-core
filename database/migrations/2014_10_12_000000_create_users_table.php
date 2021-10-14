@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::connection('admin')->create('users', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
