@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         User::create([
             'name' => 'admin',
-            'email' => 'admin@learnque.com',
+            'email' => 'admin@quadque.tech',
             'password' => Hash::make('admin')
         ]);
 
