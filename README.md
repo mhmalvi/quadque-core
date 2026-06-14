@@ -1,3 +1,6 @@
+<!-- repo-card -->
+![quadque-core](docs/assets/social-card.png)
+
 # Quadque Core
 
 The core platform module for **Quadque Technologies**. Built with Laravel 8 and Vue 3, this application provides the foundational services and shared functionality that other Quadque platform components depend on, including content management, user services, and API infrastructure.
